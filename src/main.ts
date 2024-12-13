@@ -356,14 +356,14 @@ function confetti() {
       0, window.innerHeight, 
       Math.random() * Math.cos(angle) * 64, -Math.random() * Math.sin(angle) * 80, 
       8 + Math.random() * 5,
-      800,
+      120,
       randomParticleColor()
     );
     spawnParticle(
       window.innerWidth, window.innerHeight, 
       -Math.random() * Math.cos(angle) * 64, -Math.random() * Math.sin(angle) * 80, 
       8 + Math.random() * 5,
-      800,
+      120,
       randomParticleColor()
     );
 
@@ -383,7 +383,7 @@ function firework(amount = 1, density = 0.5) {
       speed * Math.cos(angle),
       speed * Math.sin(angle),
       8 + Math.random() * 5,
-      800,
+      120,
       randomParticleColor()
     );
   }
