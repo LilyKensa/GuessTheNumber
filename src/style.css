@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  @apply font-extrabold text-4xl whitespace-nowrap select-none;
+  font-family: "Titillium Web", sans-serif;
+  background-color: #0d0e0e;
+  color: #d9dadb;
+}
+
+::selection {
+  background: #cc77ff66;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+html, body {
+  @apply m-0 p-0 w-full h-full overflow-hidden;
+}
+
+.section-float {
+  @apply absolute left-0 top-0 w-full h-full;
+}
+
+.background {
+  @apply bg-cover transition ease-out;
+  background-image: radial-gradient(#00000077, #000000dd), url("/background.png");
+  --rotate: ;
+  transform: scale(1.2) var(--rotate);
+}
+
+.intro {
+  @apply flex justify-center items-center;
+}
+
+.intro > * {
+  @apply text-center;
+}
+
+.title {
+  @apply text-6xl mb-4 transition ease-in;
+}
+
+.description {
+  @apply text-2xl;
+}
+
+.game {
+  @apply flex justify-center items-center;
+}
+
+.game > * {
+  @apply text-center;
+}
+
+.main-text {
+  @apply mb-4;
+}
+
+.guess {
+  @apply mb-4;
+}
+
+#guess-input {
+  @apply px-6 py-1 rounded-full text-center transition;
+  background: #000000aa;
+  border: 5px solid #cc99ffdd;
+}
+
+#guess-input:focus {
+  outline: none;
+  border-color: #ddaaff;
+}
+
+.progress {
+  @apply absolute mx-auto bottom-6;
+  --left: 0%;
+  --right: 100%;
+  --size: 18px;
+  width: 840px;
+  height: var(--size);
+}
+
+.progress > * {
+  @apply absolute;
+}
+
+.progress-background {
+  @apply static h-full rounded-full;
+  --bg-col-1: #7a7085dd;
+  --bg-col-2: #655d6ddd;
+  --bg-width: 10px;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--bg-col-1),
+    var(--bg-col-1) var(--bg-width),
+    var(--bg-col-2) var(--bg-width),
+    var(--bg-col-2) calc(var(--bg-width) * 2)
+  );
+  background-attachment: fixed;
+}
+
+.progress-value {
+  @apply h-full rounded-full;
+
+  margin-left: var(--left);
+  width: calc(var(--right) - var(--left));
+
+  --bg-col-1: #cc99ffdd;
+  --bg-col-2: #aa66eedd;
+  --bg-width: 10px;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--bg-col-1),
+    var(--bg-col-1) var(--bg-width),
+    var(--bg-col-2) var(--bg-width),
+    var(--bg-col-2) calc(var(--bg-width) * 2)
+  );
+  background-attachment: fixed;
+
+  transition: 200ms ease;
+}
+
+.progress-dot {
+  @apply absolute rounded-full;
+  --padding: 2px;
+
+  background: #eeeeee;  
+
+  top: calc(0px - var(--padding));
+
+  width: calc(var(--size) + var(--padding) * 2);
+  height: calc(var(--size) + var(--padding) * 2);
+
+  transition: 200ms ease;
+}
+
+.progress-dot.left {
+  left: calc(var(--left) - var(--padding));
+}
+
+.progress-dot.right {
+  left: calc(var(--right) - var(--size) - var(--padding));
+}
+
+.progress-text {
+  @apply absolute text-sm;
+  top: -50px;
+  --offset: 0px;
+  transform: translateX(calc(-50% + var(--size) * 0.5 + var(--offset)));
+  transition: 200ms ease;
+}
+
+.progress-text.left {
+  left: calc(var(--left));
+}
+
+.progress-text.right {
+  left: calc(var(--right) - var(--size));
+}
+
+.particles {
+  @apply pointer-events-none;
+}
