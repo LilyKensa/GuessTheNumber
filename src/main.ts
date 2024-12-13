@@ -338,14 +338,14 @@ function updateParticles() {
   }
 }
 
-function confetti() {
-  let colors = [
-    "#eeeeee",
-    "#ddbbff",
-    "#bbaacc"
-  ]
-  let randomColor = () => colors[Math.floor(Math.random() * colors.length)];
+let colors = [
+  "#eeeeee",
+  "#ddbbff",
+  "#bbaacc"
+]
+let randomParticleColor = () => colors[Math.floor(Math.random() * colors.length)];
 
+function confetti() {
   let amount = 40;
   let spawn = () => {
     amount--;
@@ -357,20 +357,41 @@ function confetti() {
       Math.random() * Math.cos(angle) * 64, -Math.random() * Math.sin(angle) * 80, 
       8 + Math.random() * 5,
       800,
-      randomColor()
+      randomParticleColor()
     );
     spawnParticle(
       window.innerWidth, window.innerHeight, 
       -Math.random() * Math.cos(angle) * 64, -Math.random() * Math.sin(angle) * 80, 
       8 + Math.random() * 5,
       800,
-      randomColor()
+      randomParticleColor()
     );
 
     setTimeout(spawn, 5);
   };
   spawn();
 }
+
+function firework(amount = 1, density = 0.5) {
+  for (let i = 0; i < amount; ++i) {
+    let angle = Math.random() * Math.PI * 2;
+    let speed = 2 + Math.random() * 8;
+
+    spawnParticle(
+      mousePos.x + speed * Math.cos(angle) * 5 * density,
+      mousePos.y + speed * Math.sin(angle) * 5 * density,
+      speed * Math.cos(angle),
+      speed * Math.sin(angle),
+      8 + Math.random() * 5,
+      800,
+      randomParticleColor()
+    );
+  }
+}
+
+$(window).on("mousedown", () => {
+  firework(5);
+});
 
 // tick
 
