@@ -107,6 +107,8 @@ function genNumbers() {
 function guess(ans: number) {
   $(".guess").css("display", "");
 
+  $("#guess-input").attr("placeholder", "Type here...");
+
   $(".progress").css({
     "--left": "0%",
     "--right": "100%"
